@@ -1,0 +1,51 @@
+<script type="text/javascript">
+function isDuiChengNum()
+{
+	//var isDuiCheng;
+	var arrayDuichen = new Array();
+	for (var i = 1; i < 100; i++) 
+	{
+		var isDuiChengNum=1;
+		var str = i.toString();
+		for (var m = 0; m < str.length/2; m++) 
+		{
+			if (str.charAt(m) != str.charAt(str.length-1-m)) 
+			{
+				isDuiChengNum=0;
+			}
+		}
+		if(isDuiChengNum==1)
+		{
+			arrayDuichen.push(str);
+		}
+	}
+	return arrayDuichen;
+	
+}
+
+	var array = isDuiChengNum();
+	for (var j = 0; j < array.length; j++) 
+	{
+		document.write(array[j]+",");
+	}
+// 	var arrayDuiChengNum = new Array(); 
+// 	for(i=1;i<=10000;i++)
+// 	{ 
+//         Boolean isDuiChengNum=true;         
+// 		var str = String.valueOf(i);        
+// 		var length = str.length();                 
+// 		for(var j=0;j<length/2;j++)
+// 		{ 
+//             if(str.charAt(j)!=str.charAt(length-1-j))
+// 			{                 
+// 				isDuiChengNum=false;             
+// 			}         
+// 		} 
+//         if(isDuiChengNum)
+// 		{ 
+//              arrayDuiChengNum.push(str); 
+// 		}  
+// 	} 
+// 	document.write( arrayDuiChengNum); 
+//}
+</script>

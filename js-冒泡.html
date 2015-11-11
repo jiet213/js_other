@@ -1,0 +1,43 @@
+<script type="text/javascript">
+function bubble_Sort(arr)
+{
+	for (var i = 0; i < arr.length-1; i++) 
+	{
+		for (var j = 0; j < arr.length-1-i; j++) 
+		{
+			if (arr[j]>arr[j+1]) 
+			{
+				var temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+		
+	}
+}
+function PrintArr(arr)
+{
+	for (var i = 0; i < arr.length; i++) 
+	{
+		if (i!= arr.length-1) 
+		{
+			document.write(arr[i]+',');
+		}
+		else
+		{
+			document.write(arr[i]);
+		}
+	}
+}
+
+//定义数组；
+var str = new Array(15,468,20,45,12,80,65);
+var str1 = [15,468,20,45,12,80,1];
+
+document.write("原数组为：");
+PrintArr(str1);
+bubble_Sort(str1);
+document.writeln("排序后的数组为：");
+PrintArr(str1);
+
+</script>

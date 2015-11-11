@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title>test</title>
+<script language = "javascript" type = "text/javascript"> 
+    function PubStr(strA,strB)
+    {
+        var m = strA.length;
+        var n = strB.length;
+        var pubstr="";
+        if(m>n)
+        {
+            for (var j = 0; j < n; j++) 
+            {
+                for (var i = j+1; i <= n; i++) 
+                {
+                    var matchstr = strB.substring(j,i);
+                    if (strA.match(matchstr)) 
+                    {
+                        if(matchstr.length>pubstr.length)
+                        {
+                            pubstr = matchstr;
+                        }
+                    }     
+                }
+            }         
+        }
+        else
+        {
+
+            for (var j = 0; j < m; j++) 
+            {
+                for (var i = j+1; i <= m; i++) 
+                {
+                    var matchstr = strA.substring(j,i);
+                    if (strB.match(matchstr)) 
+                    {
+                        if(matchstr.length>pubstr.length)
+                        {
+                            pubstr = matchstr;
+                        }
+                    }     
+                }
+            }
+        }
+        return pubstr;
+    }
+
+    var strB = "abccade";
+    var strA ="fbcde";
+    alert(PubStr(strA,strB));
+</script>
+</head> 
+<body> 
+    
+</body> 
+</html> 

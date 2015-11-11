@@ -1,0 +1,52 @@
+﻿<html>
+<head>
+    <title>Total</title>
+    <script type="text/javascript">
+        function Total(arr)
+	{
+		var obj = {};
+		for(var i=0;i<arr.length;i++)
+		{
+			var key = arr[i];
+			if(!obj[key])
+			{
+				obj[key] = 1;
+			}
+			else
+			{
+				obj[key]++;
+			}
+		}
+		return obj;
+	}
+	var str = "abfj345我的我_*_";
+	document.write("原字符为："+str+"<br>");
+	
+	//统计字符串中每个字符出现的次数
+	var obj = Total(str);
+	for(var k in obj)
+	{
+		document.write("字符："+k+" 出现的次数为："+obj[k]+"<br>");
+	}
+	
+	//统计字符串中出现次数最多的字符
+	/*
+	var max = -1;
+	var max_key = "";
+	var obj = Total(str);
+	for(var k in obj)
+	{
+		if(max < obj[k])
+		{
+			max = obj[k];
+			max_key = k;
+		}
+	}
+	alert("出现最多的字符为:"+max_key+" 次数为:"+max);
+	*/
+    </script>
+</head>
+<body>
+
+</body>
+</html>

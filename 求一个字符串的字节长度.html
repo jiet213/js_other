@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+    <title>Bytes</title>
+    <script type="text/javascript">
+        function GetBytes(str)
+	{
+		var len = str.length;
+		var bytes = len;
+		for(var i=0;i<len;i++)
+		{
+			if(str.charCodeAt(i)>255)
+			{
+				bytes++;
+			}
+		}
+		return bytes;
+	}
+	var str = "你好44_aA";
+	alert(GetBytes(str));
+    </script>
+</head>
+<body>
+
+</body>
+</html>
