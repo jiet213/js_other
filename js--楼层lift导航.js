@@ -126,3 +126,22 @@
              * ------------------------------------------------------------------
              */
             $(document).on('click', '.J_fn_lift li', ctrlLift);
+
+            //调用
+            $(window).on("resize scroll", function() {
+
+                time && clearTimeout(time);
+
+                time = setTimeout(function() {
+
+                    //楼层懒加载
+                    self.lazyloadModule();
+
+                    //楼层锚点控制
+                    ctrlFloorPoint();
+
+                    //侧边栏控制
+                    showRightBar();
+
+                }, 400);
+            });
