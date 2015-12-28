@@ -25,22 +25,6 @@
 
                 $lift.css("margin-top", (-liftHeight / 2) + 'px');
 
-                //非 IE7 执行悬浮搜索
-                if (!$.vars.bIsIe7) {
-
-                    //悬浮层控制
-                    if (nScrollTop > 730) {
-
-                        $fixbar.css("top", 0);
-
-                    } else {
-
-                        $fixbar.css("top", -50);
-
-                    }
-
-                }
-
                 //楼层和lift控制
                 if (nScrollTop > 550) {
 
@@ -55,14 +39,39 @@
                         var self = $(this),
                             f_top = self.offset().top;
 
-                        floorOffTop[index] = f_top;
+                        floorOffTop[index] = Math.abs(nScrollTop + yCenter - f_top - floorHeight);
 
                     });
 
                     //控制楼层选中，中心点离哪个近就选中哪个楼层
-                    var minIndex = 0,
 
-                        minDist = Math.abs(nScrollTop + yCenter-floorOffTop[0]-floorHeight);
+                    //获取minIndex推荐使用Math.min.apply方法和数组的indexOf方法，其中使用到了兼容写法，为了解决在IE8以下数组的indexOf会报错
+                    var minIndex = 0;
+
+                    if (!Array.prototype.indexOf) {
+
+                        Array.prototype.indexOf = function(obj) {
+
+                            for (var i = 0; i < this.length; i++) {
+
+                                if (this[i] == obj) {
+
+                                    return i;
+
+                                }
+
+                            }
+
+                            return -1;
+
+                        }
+
+                    }
+
+                    minIndex = floorOffTop.indexOf(Math.min.apply(Math, floorOffTop));
+
+                    //第二种使用数组循环获取
+                    /*var minDist = floorOffTop[0];
 
                     for (var i = 0; i < floorOffTop.length; i++) {
 
@@ -74,11 +83,11 @@
 
                         }
 
-                        $floor.eq(minIndex).addClass('u-flo-cur').siblings('.J-floor').removeClass('u-flo-cur');
+                    }*/
 
-                        $lift.find("li").eq(minIndex).addClass('active').siblings('li').removeClass('active');
+                    $floor.eq(minIndex).addClass('u-flo-cur').siblings('.J-floor').removeClass('u-flo-cur');
 
-                    };
+                    $lift.find("li").eq(minIndex).addClass('active').siblings('li').removeClass('active');
 
                 } else {
 

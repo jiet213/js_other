@@ -69,6 +69,19 @@
 	var max = Math.max.apply(Math, values); //8
 	var min = Math.min.apply(Math,values); //1
 
+	//解决IE8以下不支持数组的indexOf方法的写法
+	if (!Array.prototype.indexOf) {
+        Array.prototype.indexOf = function(obj) {
+            for (var i = 0; i < this.length; i++) {
+                if (this[i] == obj) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+	var index = values.indexOf(Math.min.apply(Math,values)); //7,返回最小元素的索引值
+
 14. 小数值舍入为整数的几个方法：Math.ceil()、Math.floor()和Math.round()：
 	Math.ceil()执行向上舍入，即它总是将数值向上舍入为最接近的整数；
 	Math.floor()执行向下舍入，即它总是将数值向下舍入为最接近的整数；
