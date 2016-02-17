@@ -1,4 +1,4 @@
-/*js基础知识汇总，常见的一些用法*/
+﻿/*js基础知识汇总，常见的一些用法*/
 1.检测是不是数组Array方法：
 	Object.prototype.toString.call(arr) === "[object Array]"; //推荐
 	arr instanceof Array; //是数组就返回true,如果存在多个框架，可能有问题
@@ -163,4 +163,4 @@
 	var isUndefined = function(obj) {
 		return obj === void 0;
 	}
-	444
+	444eeee
