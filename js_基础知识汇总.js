@@ -137,3 +137,30 @@
 	    console.log(a+b+c);
 	}
 	foo(1,2,3); //6
+
+20. 判断是否为dom，dom的nodeType属性值为1。这里用!!强转为boolean值：
+	var isElement = function(obj) {
+		return !!(obj && obj.nodeType === 1);
+	}
+
+	判断是否为数组：
+	var isArray = Array.isArray || function(obj) {
+		return Object.prototype.toString.call(obj) === '[object Array]';
+	}
+
+	判断是否为对象(先用typeof判断数据类型。函数也属于对象，但是由于typeof null也是object，所以用!!obj来区分这种情况):
+	var isObject = function(obj) {
+		var type = typeof obj;
+		return type === 'function' || type= 'object' && !!obj;
+	}
+
+	判断是否为NaN,这个值有两个特点：1.它是一个数；2.不等于它自己：
+	var isNaN = function(obj) {
+		return Object.prototype.toString.call(obj) === '[object Number]' && obj !== +obj;
+	}
+
+	判断是否为undefined,用void 0来表示undefined，非常有意思的小技巧。不过常用方式还是if(xxx)来判断是不是undefined。
+	var isUndefined = function(obj) {
+		return obj === void 0;
+	}
+	444
