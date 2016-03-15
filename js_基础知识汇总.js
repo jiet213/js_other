@@ -20,8 +20,13 @@
 3.数组转为字符的方法：
 	var b = arr.join("");
 
-4.判断是不是number类型的：
-	typeof(num) == "number";
+4.判断数字是不是整数：
+	var num;
+
+	1) num%1 ===0;(0代表整数，其他的说明是小数)
+	2) Math.floor(num) === num;(true说明是整数)
+	3) Number.isInteger(num);(true说明是整数)
+	4) /^\d+$/.test(num);(true说明是整数)
 
 5.以特定的进制返回数值的字符串：
 	var num = 10;
@@ -163,4 +168,27 @@
 	var isUndefined = function(obj) {
 		return obj === void 0;
 	}
-	888888
+
+21. 函数节流
+	$.throttle = function(fn, delay){
+	 	var timer = null;
+	 	return function(){
+	 		var context = this, args = arguments;
+	 		clearTimeout(timer);
+	 		timer = setTimeout(function(){
+	 			fn.apply(context, args);
+	 		}, delay);
+	 	};
+	 };
+
+	调用：
+	$(window).on("resize scroll", $.throttle(function() {
+
+        //楼层锚点控制
+        ctrlFloorPoint();
+
+        //侧边栏控制
+        showRightBar();
+
+    }, 300));
+
